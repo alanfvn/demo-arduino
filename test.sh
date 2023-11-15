@@ -9,6 +9,7 @@ cd ~
 curl -L -o arduino-cli.tar.bz2 https://downloads.arduino.cc/arduino-cli/arduino-cli-latest-linux64.tar.bz2
 tar xjf arduino-cli.tar.bz2
 rm arduino-cli.tar.bz2
+ls -la
 mv `ls -1` /usr/bin/arduino-cli
 
 # Install python, pip and pyserial
