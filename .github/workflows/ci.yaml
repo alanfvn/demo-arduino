@@ -1,0 +1,30 @@
+name: CI/CD - MCU
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+    types:
+      - opened
+      - synchronize
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install tools
+        run: |
+          chmod +x myscript.sh
+          ./test.sh
+
+      - name: Compile code
+        run: |
+          arduino-cli compile -b esp32:esp32:esp32 --output-dir ./build/
+
+      - name: Do a ls
+        run: |
+          ls -la
