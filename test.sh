@@ -6,10 +6,10 @@ apt-get install curl git -y
 
 cd ~
 # Install arduino-cli
-# curl -L -o arduino-cli.tar.bz2 https://downloads.arduino.cc/arduino-cli/arduino-cli-latest-linux64.tar.bz2
-# tar xjf arduino-cli.tar.bz2
-# rm arduino-cli.tar.bz2
-# mv `ls -1` /usr/bin/arduino-cli
+curl -L -o arduino-cli.tar.bz2 https://downloads.arduino.cc/arduino-cli/arduino-cli-latest-linux64.tar.bz2
+tar xjf arduino-cli.tar.bz2
+rm arduino-cli.tar.bz2
+mv `ls -1` /usr/bin/arduino-cli
 
 # Install python, pip and pyserial
 # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
