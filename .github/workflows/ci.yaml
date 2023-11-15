@@ -23,7 +23,7 @@ jobs:
 
       - name: Compile code
         run: |
-          arduino-cli compile -b esp32:esp32:esp32 --output-dir ./build/
+          arduino-cli compile -b esp32:esp32:esp32 .
 
       - name: Do a ls
         run: |
