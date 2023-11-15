@@ -2,7 +2,7 @@
 
 # Install dependencies
 apt-get update
-apt-get install curl git -y
+apt-get install tar curl git -y
 
 cd ~
 # Install arduino-cli
