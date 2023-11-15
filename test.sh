@@ -2,7 +2,7 @@
 
 # Install dependencies
 sudo apt-get update
-sudo apt-get install tar curl git -y
+sudo apt-get install curl git -y
 
 cd .
 
@@ -22,6 +22,8 @@ arduino-cli core install esp32:esp32 --config-file .arduino-cli.yaml
 # cd -
 
 # Install 'third-party' packages: find proper location and 'git clone'
-cd `arduino-cli config dump | grep sketchbook | sed 's/.*\ //'`/libraries
+LIBRARY_PATH="$(arduino-cli config dump | grep sketchbook | sed 's/.*\ //' )/libraries"
+mkdir -p "$LIBRARY_PATH"
+cd "$LIBRARY_PATH"
 git clone https://github.com/ayushsharma82/ElegantOTA
 cd -
