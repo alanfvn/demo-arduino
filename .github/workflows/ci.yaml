@@ -13,13 +13,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Install tools
         run: |
           chmod +x test.sh
           sudo ./test.sh
-
-      - name: Checkout Repository
-        uses: actions/checkout@v2
 
       - name: Compile code
         run: |
