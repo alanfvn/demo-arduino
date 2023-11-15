@@ -16,6 +16,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
       - name: Install tools
         run: |
           chmod +x test.sh
