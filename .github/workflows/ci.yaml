@@ -19,7 +19,7 @@ jobs:
       - name: Install tools
         run: |
           chmod +x test.sh
-          ./test.sh
+          sudo ./test.sh
 
       - name: Compile code
         run: |
