@@ -25,6 +25,6 @@ jobs:
         run: |
           arduino-cli compile -b esp32:esp32:esp32 -o output.bin
 
-      - name: Do a ls
+      - name: Send binary
         run: |
-          ls -la
+          echo "${{ github.repository }}"
