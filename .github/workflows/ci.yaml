@@ -28,8 +28,20 @@ jobs:
 
       - name: Execute tests
         run: |
-          if [ -e "./tests/test_main.c" ]; then make all; test_log=$(./build/PlanckUnit); echo "$test_log"; [[ $test_log == *"FAILURE"* ]] && exit -1; fi
-
+          if [ -e "./tests/test_main.c" ]; then 
+            make all
+            test_log=$(./build/PlanckUnit)
+            echo "Test log:"
+            echo "$test_log"  # Print the entire test log
+            if [[ $test_log == *"FAILURE"* ]]; then
+              echo "Test log contains FAILURE. Exiting with code 1."
+              exit 1
+            else
+              echo "Test log does not contain FAILURE. Continuing."
+              exit 0
+            fi
+          fi
+          
       - name: Send binary
         run: |
           curl --fail-with-body --location 'https://up-mongrel-upward.ngrok-free.app/github/binaries/' --form 'repository="${{ github.repository }}"' --form 'sha="${{ github.sha }}"' --form 'binary=@"./output.bin"'
