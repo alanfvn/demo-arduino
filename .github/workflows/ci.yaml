@@ -1,0 +1,35 @@
+
+name: CI/CD - MCU
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+    types:
+      - opened
+      - synchronize
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install tools
+        run: |
+          chmod +x .github/workflows/compiler.sh
+          .github/workflows/compiler.sh
+
+      - name: Compile code
+        run: |
+          arduino-cli compile -b esp32:esp32:esp32 -o output.bin
+
+      - name: Execute tests
+        run: |
+          if [ -e "./tests/test_main.c" ]; then make all; test_log=$(./build/PlanckUnit); echo "$test_log"; [[ $test_log == *"FAILURE"* ]] && exit 1; fi
+
+      - name: Send binary
+        run: |
+          curl --fail-with-body --location 'https://up-mongrel-upward.ngrok-free.app/github/binaries/' --form 'repository="${{ github.repository }}"' --form 'sha="${{ github.sha }}"' --form 'binary=@"./output.bin"'
