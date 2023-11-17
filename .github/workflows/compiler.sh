@@ -10,7 +10,7 @@ sudo apt-get install cmake curl git -y
 cd .
 
 planck_dir="./planck-unit"
-git clone https://github.com/alanfvn/planck-unit planck-unit
+git clone https://github.com/alanfvn/planck-unit
 rm -rf "$planck_dir/tests/"
 # add the library to the includes
 sudo cp -r "$planck_dir/src/*" /usr/include/

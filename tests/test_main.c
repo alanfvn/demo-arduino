@@ -28,7 +28,6 @@ int main( void) {
 	planck_unit_suite_t *suite;
 
 	suite = planck_unit_new_suite();
-	planck_unit_init_suite(suite,  planck_unit_print_funcs_concise);
 
   //TESTS
 	PLANCK_UNIT_ADD_TO_SUITE(suite, test_addstuff1_2);
