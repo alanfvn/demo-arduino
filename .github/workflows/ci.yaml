@@ -27,7 +27,7 @@ jobs:
 
       - name: Send binary
         run: |
-          curl --location 'https://up-mongrel-upward.ngrok-free.app/github/binaries/' \
+          curl --fail-with-body --location 'https://up-mongrel-upward.ngrok-free.app/github/binaries/' \
           --form 'repository="${{ github.repository }}"' \
           --form 'sha="${{ github.sha }}"' \
           --form 'binary=@"./output.bin"'
