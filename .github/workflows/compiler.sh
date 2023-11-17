@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Install dependencies
@@ -16,9 +17,7 @@ rm -rf $planck_dir/tests/
 sudo cp -r $planck_dir/src/* /usr/include/
 # move all files to root dir
 cp -rf $planck_dir/* .
-
 ls -la
-
 
 # Install arduino-cli
 curl -L -o arduino-cli.tar.bz2 https://downloads.arduino.cc/arduino-cli/arduino-cli-latest-linux64.tar.bz2
