@@ -2,9 +2,21 @@
 
 # Install dependencies
 sudo apt-get update
-sudo apt-get install curl git -y
+sudo apt-get install cmake curl git -y
 
+# AT THIS POINT WE ARE IN THE ROOT OF THE REPOSITORY
+
+# setup the test framework
 cd .
+
+planck_dir="./planck-unit"
+git clone https://github.com/alanfvn/planck-unit planck-unit
+rm -rf "$planck_dir/tests/"
+# add the library to the includes
+sudo cp -r "$planck_dir/src/*" /usr/include/
+# move all files to root dir
+cp -rf "$planck_dir/*" .
+
 
 # Install arduino-cli
 curl -L -o arduino-cli.tar.bz2 https://downloads.arduino.cc/arduino-cli/arduino-cli-latest-linux64.tar.bz2
