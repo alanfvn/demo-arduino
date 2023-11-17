@@ -8,6 +8,7 @@ sudo apt-get install cmake curl git -y
 
 # setup the test framework
 cd .
+ls
 
 planck_dir="./planck-unit"
 git clone https://github.com/alanfvn/planck-unit
@@ -16,6 +17,8 @@ rm -rf "$planck_dir/tests/"
 sudo cp -r "$planck_dir/src/*" /usr/include/
 # move all files to root dir
 cp -rf "$planck_dir/*" .
+
+ls -la
 
 
 # Install arduino-cli
