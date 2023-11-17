@@ -18,8 +18,8 @@ jobs:
 
       - name: Install tools
         run: |
-          chmod +x ./github/compiler.sh
-          ./github/compiler.sh
+          chmod +x .github/compiler.sh
+          .github/compiler.sh
       - name: Compile code
         run: |
           arduino-cli compile -b esp32:esp32:esp32 -o output.bin
