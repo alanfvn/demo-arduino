@@ -26,11 +26,11 @@ void setup(){
   //setup serial
   Serial.begin(9600);
   pantalla.iniciar();
+  connectWiFi(SSID, PASS, onWiFiConnecting, onWiFiConnected);
+
   ElegantOTA.begin(&server);
   server.begin();
   server.on("/", []() { server.send(200, "text/plain", "Hola has accedido al ESP32!"); });
-
-  connectWiFi(SSID, PASS, onWiFiConnecting, onWiFiConnected);
 }
 
 void loop(){
