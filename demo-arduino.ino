@@ -2,8 +2,8 @@
 #include <WebServer.h>
 #include <ElegantOTA.h>
 
-#define ssid "HITRON93394"
-#define pass "4D94BHITRON" 
+#define ssid "vivobook"
+#define pass "alandavid" 
 
 WebServer server(80);
 
