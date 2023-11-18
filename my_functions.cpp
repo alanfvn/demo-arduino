@@ -17,6 +17,6 @@ char * getNetworkInfo(const char* ssid, const char* mac_address){
 
 char* getUltraSonicString(int distance){
   char * message = (char*) malloc(30);
-  sprintf(message, "** Distancia: %d", distance);
+  sprintf(message, "=> Distancia: %d", distance);
   return message;
 }
