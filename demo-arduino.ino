@@ -17,20 +17,26 @@ void onWiFiConnecting(){
 }
 
 void onWiFiConnected(){
+  char * data = getNetworkInfo(SSID, ".");
   pantalla.limpiar();
-  pantalla.imprimir(0, 0, "CONECTADO!");
-  Serial.println("Conectado!");
+  pantalla.imprimir(0, 0, data);
+  Serial.println(data);
+  free(data);
 }
 
 void setup(){
   //setup serial
-  Serial.begin(9600);
   pantalla.iniciar();
+  Serial.begin(9600);
   connectWiFi(SSID, PASS, onWiFiConnecting, onWiFiConnected);
 
   ElegantOTA.begin(&server);
   server.begin();
   server.on("/", []() { server.send(200, "text/plain", "Hola has accedido al ESP32!"); });
+
+  //pins
+  pinMode(TRIG, OUTPUT); // Sets the trigPin as an Output
+  pinMode(ECHO, INPUT); // Sets the echoPin as an Input
 }
 
 void loop(){
@@ -40,7 +46,12 @@ void loop(){
   long echoDur = getPulseDuration();
   int cm = getUltraSonicDistance(echoDur);
 
-  Serial.printf("Duracion: %d", cm);
+  char *data = getUltraSonicString(cm);
+  pantalla.limpiar();
+  pantalla.imprimir(0,0,data);
+  free(data);
+
+  Serial.printf("Duracion: %d\n", cm);
   delay(1000);
 }
 

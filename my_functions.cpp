@@ -14,3 +14,10 @@ char * getNetworkInfo(const char* ssid, const char* mac_address){
   sprintf(message, "\nSSID: %s\nMAC: %s", ssid, mac_address);
   return message;
 }
+
+char* getUltraSonicString(int distance){
+  char * message = (char*) malloc(30);
+  sprintf(message, "Distancia: %d", distance);
+  return message;
+}
+

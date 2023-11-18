@@ -4,7 +4,7 @@
 #define SSID "vivobook"
 #define PASS "alandavid"
 
-#define TRIG 16
-#define ECHO 17
+#define TRIG 19
+#define ECHO 23
 
 #endif // !MY_CONSTANTS_H 
