@@ -4,7 +4,7 @@
 
 //test pasar valores
 int getUltraSonicDistance(long duration){
-  int distanceCm = (duration * 10 ) / 292 / 2;
+  int distanceCm = (duration * 10 ) / 292 / 3;
   return distanceCm;
 }
 
