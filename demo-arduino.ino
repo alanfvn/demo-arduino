@@ -13,7 +13,7 @@ Pantalla pantalla;
 void onWiFiConnecting(){
   Serial.print(".");
   pantalla.limpiar();
-  pantalla.imprimir(0, 0, "Conectando..");
+  pantalla.imprimir(0, 0, "Conectando...");
 }
 
 void onWiFiConnected(){
@@ -45,14 +45,14 @@ void loop(){
 
   long echoDur = getPulseDuration();
   int cm = getUltraSonicDistance(echoDur);
-
   char *data = getUltraSonicString(cm);
+
   pantalla.limpiar();
   pantalla.imprimir(0,0,data);
-  free(data);
 
-  Serial.printf("Duracion: %d\n", cm);
-  delay(1000);
+  Serial.printf("%s\n",data);
+  free(data);
+  delay(500);
 }
 
 long getPulseDuration(){
