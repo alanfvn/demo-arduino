@@ -39,4 +39,5 @@ LIBRARY_PATH="$(arduino-cli config dump | grep sketchbook | sed 's/.*\ //' )/lib
 mkdir -p "$LIBRARY_PATH"
 cd "$LIBRARY_PATH"
 git clone https://github.com/ayushsharma82/ElegantOTA
+git clone https://github.com/ThingPulse/esp8266-oled-ssd1306
 cd -
