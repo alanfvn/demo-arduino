@@ -1,3 +1,5 @@
+#ifdef ESP32
+
 #include "wifi_util.h"
 
 void connectWiFi(
@@ -10,3 +12,5 @@ void connectWiFi(
   }
   onConnected();
 }
+
+#endif

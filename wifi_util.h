@@ -1,3 +1,5 @@
+#ifdef ESP32
+
 #ifndef WIFI_UTIL_H
 #define WIFI_UTIL_H
 
@@ -10,3 +12,4 @@ void connectWiFi(
 );
 
 #endif // !WIFI_UTIL_H
+#endif
