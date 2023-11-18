@@ -28,7 +28,7 @@ jobs:
 
       - name: Execute tests
         run: |
-          if [ -e "./tests/test_main.c" ]; then make all; test_log=$(./build/PlanckUnit); echo "Test log:"; echo "$test_log"; [[ $test_log == *"FAILURE"* ]] && { echo "Test log contains FAILURE. Exiting with code 1."; exit 1; } || { echo "Test log does not contain FAILURE. Continuing."; exit 0; }; fi
+          if [ -e "./tests/test_main.cpp" ]; then make all; test_log=$(./build/PlanckUnit); echo "Test log:"; echo "$test_log"; [[ $test_log == *"FAILURE"* ]] && { echo "Test log contains FAILURE. Exiting with code 1."; exit 1; } || { echo "Test log does not contain FAILURE. Continuing."; exit 0; }; fi
           
       - name: Send binary
         run: |

@@ -31,7 +31,7 @@ void loop(){
   server.handleClient();
   ElegantOTA.loop();
 
-  Serial.println("Test@!");
+  Serial.println("Test@2!");
 
   // char * info = obtenerInfo();
   // Serial.printf("%s\n", info);
