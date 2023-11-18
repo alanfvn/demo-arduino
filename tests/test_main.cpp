@@ -14,8 +14,8 @@ void test_addstuff1_2( planck_unit_test_t *tc) {
 }
 
 void check_strings( planck_unit_test_t *tc) {
-  const char	*a	= "apple";
-  const char	*b	= "apple";
+  char *a	= "apple";
+  char *b	= "apple";
 
   PLANCK_UNIT_ASSERT_STR_ARE_EQUAL(tc, a, b);
 }
