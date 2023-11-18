@@ -22,7 +22,7 @@ void check_strings( planck_unit_test_t *tc) {
 
 void check_nothing(planck_unit_test_t *tc){
   int test = getUltraSonicDistance(50);
-  PLANCK_UNIT_ASSERT_TRUE(tc, true);
+  PLANCK_UNIT_ASSERT_TRUE(tc, 1==1);
 }
 
 
