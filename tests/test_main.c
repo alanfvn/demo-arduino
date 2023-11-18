@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "planck_unit.h"
+#include "../my_functions.h"
 
 int add_stuff1( int a, int b) {
   return a + b;
@@ -19,6 +20,11 @@ void check_strings( planck_unit_test_t *tc) {
   PLANCK_UNIT_ASSERT_STR_ARE_EQUAL(tc, a, b);
 }
 
+void check_nothing(planck_unit_test_t *tc){
+  int test = getUltraSonicDistance(50);
+  PLANCK_UNIT_ASSERT_TRUE(tc, true);
+}
+
 
 int main(void) {
   planck_unit_suite_t *suite;
@@ -28,6 +34,7 @@ int main(void) {
   //TESTS
   PLANCK_UNIT_ADD_TO_SUITE(suite, test_addstuff1_2);
   PLANCK_UNIT_ADD_TO_SUITE(suite, check_strings);
+  PLANCK_UNIT_ADD_TO_SUITE(suite, check_nothing);
 
   //EXECUTE
   planck_unit_run_suite(suite);

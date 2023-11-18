@@ -1,45 +1,40 @@
-#include <WiFi.h>
 #include <WebServer.h>
 #include <ElegantOTA.h>
 
-#define ssid "vivobook"
-#define pass "alandavid" 
+#include "my_constants.h"
+#include "my_functions.h"
+#include "wifi_util.h"
 
 WebServer server(80);
 
-void conectar(){
-  WiFi.begin(ssid,pass);
-  while(WiFi.status() != WL_CONNECTED){
-    Serial.print(".");
-    delay(250);
-  }
-  Serial.println("WiFi Conectado!");
+//callbacks
+void onWiFiConnecting(){
+  Serial.print(".");
 }
 
-char * obtenerInfo() {
-  char * message = (char*) malloc(84);
-  sprintf(message, "\nSSID: %s\nMAC: %s", ssid, WiFi.macAddress().c_str());
-  return message;
+void onWiFiConnected(){
+  Serial.println("Conectado!");
 }
 
 void setup(){
+  //setup serial
   Serial.begin(9600);
-  conectar();
+
+  connectWiFi(SSID, PASS, onWiFiConnecting, onWiFiConnected);
 
   ElegantOTA.begin(&server);
   server.begin();
-
-  server.on("/", []() {
-    server.send(200, "text/plain", "Hola has accedido al ESP32!");
-  });
+  server.on("/", []() { server.send(200, "text/plain", "Hola has accedido al ESP32!"); });
 }
 
 void loop(){
   server.handleClient();
   ElegantOTA.loop();
 
-  char * info = obtenerInfo();
-  Serial.printf("%s\n", info);
-  free(info);
+  Serial.println("Test@!");
+
+  // char * info = obtenerInfo();
+  // Serial.printf("%s\n", info);
+  // free(info);
   delay(1000);
 }
