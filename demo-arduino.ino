@@ -36,9 +36,22 @@ void setup(){
 void loop(){
   server.handleClient();
   ElegantOTA.loop();
-  // char * info = obtenerInfo();
-  // Serial.printf("%s\n", info);
-  // free(info);
-  Serial.println("actualizado!");
+
+  long echoDur = getPulseDuration();
+  int cm = getUltraSonicDistance(echoDur);
+
+  Serial.printf("Duracion: %d", cm);
   delay(1000);
+}
+
+long getPulseDuration(){
+  digitalWrite(TRIG, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+  
+  duration = pulseIn(ECHO, HIGH);
+  return duration
 }
