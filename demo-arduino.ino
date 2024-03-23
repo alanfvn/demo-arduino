@@ -63,6 +63,7 @@ long getPulseDuration(){
   delayMicroseconds(10);
   digitalWrite(TRIG, LOW);
   
+  //adios
   long duration = pulseIn(ECHO, HIGH);
   return duration;
 }
